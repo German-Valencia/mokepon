@@ -4,16 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/German-Valencia/mokepon.git"
+    "url": "https://github.com/German-Valencia/mokepon.git"
   },
   "author": "German",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/German-Valencia/mokepon/issues"
   },
-  "homepage": "https://github.com/German-Valencia/mokepon#readme"
+  "homepage": "https://github.com/German-Valencia/mokepon#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
 }

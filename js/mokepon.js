@@ -36,8 +36,6 @@ let mokepones = [];
 let opcionDeMokepones;
 let botones;
 
-/* let vidasJugador = 5;
-let vidasEnemigo = 5; */
 let victoriasEnemigo = 0;
 let victoriasJugador = 0;
 
@@ -64,6 +62,8 @@ let botonReiniciar = document
 let sectionMensajes = document.getElementById("resultado");
 let ataquesDelJugador = document.getElementById("ataques-del-jugador");
 let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
+
+unirseAlJuego();
 
 class Mokepon {
   constructor(nombre, foto, vida, id, fotoMapa) {
@@ -510,4 +510,10 @@ function revisarColision(enemigo) {
   seleccionarMascotaEnemigo(enemigo);
   alert(`Hay batalla contra ${enemigo.nombre}`);
   console.log("se detecto una colision");
+}
+
+function unirseAlJuego() {
+  fetch("http://localhost:8080/unirse").then((res) => {
+    console.log(res);
+  });
 }
