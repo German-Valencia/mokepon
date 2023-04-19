@@ -32,6 +32,12 @@ mapa.height = alturaQueBuscamos;
 
 //FINAL CANVAS
 
+//BACKEND
+
+let jugadorId = null;
+
+//FINAL BACKEND
+
 let mokepones = [];
 let opcionDeMokepones;
 let botones;
@@ -217,6 +223,9 @@ function seleccionarMascotaJugador() {
       alert("selecciona un MOKEPON");
       break;
   }
+
+  seleccionarMokepon(mascotaJugador); //backend
+
   extraertaques(mascotaJugador);
 
   sectionSeleccionarMascota.style.display = "none";
@@ -224,6 +233,19 @@ function seleccionarMascotaJugador() {
   sectionVerMapa.style.display = "flex";
 
   iniciarMapa();
+}
+
+//backend
+function seleccionarMokepon(mascotaJugador) {
+  fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      mokepon: mascotaJugador,
+    }),
+  });
 }
 
 function extraertaques(mascotaJugador) {
@@ -286,9 +308,7 @@ function random(min, max) {
 function seleccionarMascotaEnemigo(enemigo) {
   spanMascotaEnemigo.innerText = enemigo.nombre;
   ataquesMokeponEnemigo = enemigo.ataques;
-  /* let mascotaAleatoria = random(0, mokepones.length - 1);
-  spanMascotaEnemigo.innerText = mokepones[mascotaAleatoria].nombre;
-  ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques; */
+
   secuenciaAtaque();
 }
 
@@ -418,6 +438,9 @@ function PintarCanvas() {
   lienzo.clearRect(0, 0, mapa.width, mapa.height); //limpia el canvas
   lienzo.drawImage(mapaBackground, 0, 0, mapa.width, mapa.height);
   mascotaJugadorObjeto.pintarMokepon();
+  //backend
+  enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y);
+  //fin backend
   hipodogeEnemigo.pintarMokepon();
   capipepoEnemigo.pintarMokepon();
   ratigueyaEnemigo.pintarMokepon();
@@ -430,6 +453,22 @@ function PintarCanvas() {
     revisarColision(ratigueyaEnemigo);
   }
 }
+
+//backend
+function enviarPosicion(x, y) {
+  fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      x: x,
+      y: y,
+    }),
+  });
+}
+
+//fin backend
 
 function moverDerecha() {
   mascotaJugadorObjeto.velocidadX = 5;
@@ -512,8 +551,14 @@ function revisarColision(enemigo) {
   console.log("se detecto una colision");
 }
 
+//backend
 function unirseAlJuego() {
   fetch("http://localhost:8080/unirse").then((res) => {
-    console.log(res);
+    if (res.ok) {
+      res.text().then((respuesta) => {
+        console.log(respuesta);
+        jugadorId = respuesta;
+      });
+    }
   });
 }
