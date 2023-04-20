@@ -440,7 +440,7 @@ function enviarPosicion(x, y) {
         mokeponesEnemigos = enemigos.map(function (enemigo) {
           let mokeponEnemigo = null;
 
-          //if (enemigo.mokepon !== undefined) {
+          if (enemigo.mokepon !== undefined) {
           const mokeponNombre = enemigo.mokepon.nombre || "";
           if (mokeponNombre === "Hipodoge") {
             mokeponEnemigo = new Mokepon(
@@ -471,7 +471,7 @@ function enviarPosicion(x, y) {
           mokeponEnemigo.y = enemigo.y;
           return mokeponEnemigo;
           //mokeponEnemigo.pintarMokepon();
-          // }
+          }
         });
       });
     }
