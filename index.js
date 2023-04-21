@@ -5,6 +5,7 @@ app.listen(port, () => {
   console.log("Server Ok"); // tercero para escuchar peticiones
 });
 const cors = require("cors"); // para evitar error CORS se instala 'npm i cors'
+app.use(express.static('public')) //para levantar el servidor de node
 app.use(cors()); // aquí le decimos a express que use cors
 app.use(express.json()); //habilitar capacidad de recibir peticiones post en JSON
 
@@ -20,6 +21,9 @@ class Jugador {
   actualizarPosicion(x, y) {
     this.x = x;
     this.y = y;
+  }
+  asignarAtaques(ataques) {
+    this.ataques = ataques;
   }
 }
 
@@ -68,6 +72,24 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => {
   });
 });
 
+app.post("/mokepon/:jugadorId/ataques", (req, res) => {
+  const jugadorId = req.params.jugadorId || "";
+  const ataques = req.body.ataques || [];
 
+  const jugadorIndex = jugadores.findIndex(
+    (jugador) => jugadorId === jugador.id
+  );
+  if (jugadorIndex >= 0) {
+    jugadores[jugadorIndex].asignarAtaques(ataques);
+  }
 
+  res.end();
+});
 
+app.get("/mokepon/:jugadorId/ataques", (req, res) => {
+  const jugadorId = req.params.jugadorId || "";
+  const jugador = jugadores.find((jugador) => jugador.id === jugadorId);
+  res.send({
+    ataques: jugador.ataques || [],
+  });
+});

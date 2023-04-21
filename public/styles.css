@@ -20,13 +20,17 @@ body {
   margin-bottom: 0;
 }
 
+.button {
+  user-select: none;
+}
+
 #ver-mapa {
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#ver-mapa button{
+#ver-mapa button {
   color: red;
   font-family: "Poppins", sans-serif;
   /* background-color: lightcoral; */
@@ -40,7 +44,7 @@ body {
   border-radius: 20px;
 }
 
-#flechas{
+#flechas {
   /* border: 2px solid white; */
   margin: -7px;
 }
@@ -124,13 +128,13 @@ input:checked + label p {
 }
 
 #seleccionar-ataque {
-  font-family: "Fredoka", sans-serif;  
+  font-family: "Fredoka", sans-serif;
   flex-direction: column;
   align-items: center;
   color: white;
 }
 
-#seleccionar-ataque h1{
+#seleccionar-ataque h1 {
   font-size: 32px;
   margin-bottom: 0;
   margin-top: 0;
@@ -215,9 +219,9 @@ input:checked + label p {
   .tarjetas,
   .tarjetas-ataques {
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
   }
   .boton-de-ataque {
-    width: 80px;    
-  }  
+    width: 80px;
+  }
 }
