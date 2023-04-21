@@ -419,7 +419,7 @@ function crearMensajeFinal(resultadoFinal) {
 }
 
 function reiniciarJuego() {
-  location.reload();
+  location.reload();  
 }
 
 //canvas
@@ -440,18 +440,6 @@ function pintarCanvas() {
     }
   });
   //fin backend
-
-  /*     hipodogeEnemigo.pintarMokepon();
-  capipepoEnemigo.pintarMokepon();
-  ratigueyaEnemigo.pintarMokepon();
-  if (
-    mascotaJugadorObjeto.velocidadX !== 0 ||
-    mascotaJugadorObjeto.velocidadY !== 0
-  ) {
-    revisarColision(hipodogeEnemigo);
-    revisarColision(capipepoEnemigo);
-    revisarColision(ratigueyaEnemigo);
-  } */
 }
 
 //backend

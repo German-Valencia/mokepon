@@ -31,9 +31,9 @@ body {
 }
 
 #ver-mapa button {
-  color: red;
+/*   color: red;
   font-family: "Poppins", sans-serif;
-  /* background-color: lightcoral; */
+  ******background-color: lightcoral; 
   background: transparent;
   width: 30px;
   height: 30px;
@@ -41,7 +41,20 @@ body {
   border: 1px solid white;
   padding: 5px;
   margin-top: 10px;
-  border-radius: 20px;
+  border-radius: 20px; */
+
+  color: red;
+  font-family: "Poppins", sans-serif;
+  /* background-color: lightcoral; */
+  background: transparent;
+  width: 64px;
+  height: 64px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 31px;
+  font-size: 35px;
 }
 
 #flechas {
